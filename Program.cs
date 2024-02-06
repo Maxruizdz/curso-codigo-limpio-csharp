@@ -57,17 +57,27 @@ namespace ToDo
                 string line = Console.ReadLine();
                 // Remove one position
                 int indexToRemove = Convert.ToInt32(line) - 1;
-                if (indexToRemove > -1 && TaskList.Count > 0)
+                if (indexToRemove > TaskList.Count - 1 || indexToRemove < 0)
                 {
-                   
+
+                    Console.WriteLine("El numero de tarea seleccionado no es valido");
+                }
+                else
+                {
+                    if (indexToRemove > -1 && TaskList.Count > 0)
+                    {
+
                         string task = TaskList[indexToRemove];
                         TaskList.RemoveAt(indexToRemove);
                         Console.WriteLine("Tarea " + task + " eliminada");
-                    
+
+                    }
                 }
             }
             catch (Exception)
             {
+
+                Console.WriteLine("Ha surgido un error a la hora de eliminar una tarea");
             }
         }
 
